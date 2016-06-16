@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_stazione"
+            android:icon="@mipmap/train"
+            android:title="Stazione" />
+
+        <item
+            android:id="@+id/nav_mappa"
+            android:icon="@mipmap/map"
+            android:title="Mappa stazioni" />
+
+    </group>
+
+    <item android:title="Applicazione">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@mipmap/settings"
+                android:title="Impostazioni" />
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@mipmap/information"
+                android:title="Informazioni" />
+        </menu>
+    </item>
+
+</menu>
