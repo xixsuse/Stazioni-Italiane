@@ -14,7 +14,7 @@ import it.federicomagnani.stazioniitaliane.R;
 public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
 
     TextView destinazione, orario, binario, ritardo, identificativo;
-    ImageView img_tipo;
+    ImageView img_tipo, img_binario;
 
     public TrenoStazioneView(Context context) {
         super(context);
@@ -34,6 +34,7 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
         ritardo = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_ritardo);
         identificativo = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_identificativo);
 
+        img_binario = (ImageView) getRootView().findViewById(R.id.img_treno_stazione_binario);
         img_tipo = (ImageView) getRootView().findViewById(R.id.img_item_treno_stazione);
     }
 
@@ -58,8 +59,10 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
         identificativo.setText(trenoStazione.identificativo);
 
         if (trenoStazione.binario_confermato) {
+            img_binario.setColorFilter(Color.rgb(3, 101, 192));
             binario.setTextColor(Color.rgb(3, 101, 192));
         } else {
+            img_binario.setColorFilter(Color.rgb(130, 130, 130));
             binario.setTextColor(Color.rgb(130, 130, 130));
         }
 
