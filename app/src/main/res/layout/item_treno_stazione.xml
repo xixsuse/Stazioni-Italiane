@@ -7,7 +7,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:id="@+id/img_item_treno_stazione"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         app:srcCompat="@mipmap/logo_treno_standard"
         android:layout_width="50dp"
         android:layout_height="50dp" />
@@ -19,7 +19,7 @@
         android:layout_alignTop="@+id/img_item_treno_stazione"
         android:id="@+id/txt_item_treno_stazione_destinazione"
         android:textColor="#444"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="normal|bold"
         android:layout_toLeftOf="@+id/txt_item_treno_stazione_ritardo"
         android:layout_toRightOf="@+id/img_item_treno_stazione"
@@ -42,20 +42,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/txt_item_treno_stazione_orario"
         android:textColor="#444"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:layout_alignBottom="@+id/txt_item_treno_stazione_destinazione"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/txt_item_treno_stazione_destinazione"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical" />
 
     <TextView
-        android:text="+0 minuti"
+        android:text="+0 min"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txt_item_treno_stazione_ritardo"
         android:textColor="@color/colorPrimary"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:layout_toLeftOf="@+id/txt_item_treno_stazione_orario"
         android:layout_toStartOf="@+id/txt_item_treno_stazione_orario"
         android:layout_marginRight="8dp"

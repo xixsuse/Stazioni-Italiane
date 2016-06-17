@@ -9,6 +9,8 @@ public class Stazione extends SugarRecord {
 
     public String id_stazione;
     public String nome;
+    public int popolarita;
+    public boolean preferita;
 
     public Stazione() {
         id_stazione = "test";
@@ -19,6 +21,8 @@ public class Stazione extends SugarRecord {
         try {
             id_stazione = o.getString("id");
             nome = o.getString("nome");
+            popolarita = 1;
+            preferita = false;
         } catch (JSONException e) {
             e.printStackTrace();
         }

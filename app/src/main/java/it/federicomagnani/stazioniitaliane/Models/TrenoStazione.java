@@ -11,6 +11,7 @@ public class TrenoStazione {
 
     public TrenoStazione(JSONObject o) {
         try {
+
             destinazione = o.getString("destinazione");
             origine = o.getString("origine");
             ritardo = o.getInt("ritardo");
@@ -28,7 +29,7 @@ public class TrenoStazione {
     }
 
     public String getPosto() {
-        return destinazione.equals("null") ? origine : destinazione;
+        return ucwords(destinazione.equals("null") ? origine : destinazione);
     }
 
     public String getOrario() {
@@ -36,7 +37,16 @@ public class TrenoStazione {
     }
 
     public String getBinario() {
-        return binario_partenza.equals("null") ? binario_arrivo : binario_partenza;
+        return ucwords(binario_partenza.equals("null") ? binario_arrivo : binario_partenza);
+    }
+
+    private String ucwords(String sentence) {
+        StringBuffer sb = new StringBuffer();
+        sentence = sentence.toLowerCase();
+        for (CharSequence word: sentence.split(" ")) {
+            sb.append(Character.toUpperCase(word.charAt(0))).append(word.subSequence(1, word.length())).append(" ");
+        }
+        return sb.toString().trim();
     }
 
 }

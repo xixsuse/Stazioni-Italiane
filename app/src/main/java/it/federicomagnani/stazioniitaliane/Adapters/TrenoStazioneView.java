@@ -42,7 +42,7 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
         destinazione.setText(trenoStazione.getPosto());
         orario.setText(trenoStazione.getOrario());
 
-        if (trenoStazione.getBinario().equals("null")) {
+        if (trenoStazione.getBinario().equals("Null")) {
             binario.setText("No binario");
         } else {
             binario.setText("Binario " + trenoStazione.getBinario());
@@ -50,7 +50,7 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
 
         if (trenoStazione.ritardo > 0) {
             ritardo.setVisibility(VISIBLE);
-            ritardo.setText("+"+trenoStazione.ritardo+" minuti");
+            ritardo.setText("+"+trenoStazione.ritardo+" min");
         } else {
             ritardo.setVisibility(GONE);
         }
@@ -67,6 +67,14 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoStazione> {
             img_tipo.setImageResource(R.mipmap.logo_treno_intercity);
         } else if (trenoStazione.tipo_treno.equals("REG")) {
             img_tipo.setImageResource(R.mipmap.logo_treno_regionale);
+        } else if  (trenoStazione.tipo_treno.equals("ES*") && trenoStazione.identificativo.contains("FR")) {
+            img_tipo.setImageResource(R.mipmap.logo_treno_frecciarossa);
+        } else if  (trenoStazione.tipo_treno.equals("ES*") && trenoStazione.identificativo.contains("FB")) {
+            img_tipo.setImageResource(R.mipmap.logo_treno_frecciabianca);
+        } else if  (trenoStazione.tipo_treno.equals("ES*") && trenoStazione.identificativo.contains("FA")) {
+            img_tipo.setImageResource(R.mipmap.logo_treno_frecciaargento);
+        } else if  (trenoStazione.tipo_treno.equals("EC")) {
+            img_tipo.setImageResource(R.mipmap.logo_treno_eurocity);
         } else { //Fallback su default
             img_tipo.setImageResource(R.mipmap.logo_treno_standard);
         }
