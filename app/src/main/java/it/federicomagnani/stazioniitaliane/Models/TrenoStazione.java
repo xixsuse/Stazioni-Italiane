@@ -1,5 +1,7 @@
 package it.federicomagnani.stazioniitaliane.Models;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,7 +44,8 @@ public class TrenoStazione {
 
     private String ucwords(String sentence) {
         StringBuffer sb = new StringBuffer();
-        sentence = sentence.toLowerCase();
+        sentence = sentence.toLowerCase().replace("  ", " ").trim();
+        Log.d("nome stazione", sentence);
         for (CharSequence word: sentence.split(" ")) {
             sb.append(Character.toUpperCase(word.charAt(0))).append(word.subSequence(1, word.length())).append(" ");
         }

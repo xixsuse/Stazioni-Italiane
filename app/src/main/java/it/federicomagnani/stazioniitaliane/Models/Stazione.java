@@ -21,7 +21,7 @@ public class Stazione extends SugarRecord {
         try {
             id_stazione = o.getString("id");
             nome = o.getString("nome");
-            popolarita = 1;
+            popolarita = o.getInt("ordine");
             preferita = false;
         } catch (JSONException e) {
             e.printStackTrace();

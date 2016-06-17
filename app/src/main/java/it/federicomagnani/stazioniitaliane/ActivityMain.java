@@ -62,6 +62,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
                 FragmentStazioni.id_stazione = s.id_stazione;
                 FragmentStazioni.nome_stazione = s.nome;
                 searchView.closeSearch();
+                getSupportActionBar().setTitle(s.nome);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.container_fragment, FragmentStazioni.newInstance(), "fragment_corrente")
@@ -101,7 +102,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
               public boolean onQueryTextChange(String newText) {
                   List<Stazione> stazioni = new ArrayList<>();
                   if (newText.length() > 0) {
-                      stazioni = Stazione.find(Stazione.class, "nome LIKE ?", "%" + newText + "%");
+                      stazioni = Stazione.find(Stazione.class, "nome LIKE ? ORDER BY popolarita ASC", "%" + newText + "%");
                   }
                   if (stazioni.size() > 0) {
                       findViewById(R.id.txt_search_placeholder).setVisibility(View.GONE);
