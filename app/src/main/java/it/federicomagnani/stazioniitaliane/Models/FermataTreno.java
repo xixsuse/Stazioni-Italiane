@@ -14,8 +14,10 @@ public class FermataTreno {
 
     public Stazione stazione;
     public String data_arrivo_programmata;
+    public long milliseconds_data_arrivo;
     public int ritardo_arrivo;
     public String data_partenza_programmata;
+    public String data_stimata;
     public int ritardo_partenza;
     public boolean treno_arrivato;
     public boolean treno_partito;
@@ -49,6 +51,7 @@ public class FermataTreno {
             } else {
                 binario = "No binario";
             }
+            binario = binario.trim();
 
             is_fermata_soppressa = o.has("actualFermataType") && o.getInt("actualFermataType") == 3;
 
@@ -63,6 +66,7 @@ public class FermataTreno {
             if (!o.getString("arrivo_teorico").equals("null")) {
                 calendar.setTimeInMillis(Long.parseLong(o.getString("arrivo_teorico")));
                 data_arrivo_programmata = Utility.formaData(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
+                milliseconds_data_arrivo = Long.parseLong(o.getString("arrivo_teorico"));
             } else {
                 data_arrivo_programmata = "";
             }

@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import it.federicomagnani.stazioniitaliane.Utility;
@@ -70,6 +71,15 @@ public class Tratta {
                             fermate.get(i).treno_partito = true;
                         }
                         fermate.get(i).treno_arrivato = true;
+                        fermate.get(i).data_stimata = "";
+                    } else {
+                        if (ritardo < 0) {
+                            ritardo = 0;
+                        }
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTimeInMillis(fermate.get(i).milliseconds_data_arrivo+(60000*ritardo));
+
+                        fermate.get(i).data_stimata = Utility.formaData(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
                     }
                 }
             }

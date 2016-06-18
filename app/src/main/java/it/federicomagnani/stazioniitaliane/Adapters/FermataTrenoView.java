@@ -15,7 +15,7 @@ import it.federicomagnani.stazioniitaliane.R;
 
 public class FermataTrenoView extends BindableFrameLayout<FermataTreno> {
 
-    TextView nome_stazione, orario_arrivo, orario_partenza, ritardo_partenza, ritardo_arrivo, binario;
+    TextView nome_stazione, orario_arrivo, orario_partenza, ritardo_partenza, ritardo_arrivo, binario, data_stimata;
     ImageView simbolo_stazione, simbolo_binario;
     View segmento_precedente, segmento_successivo;
     Context context;
@@ -39,6 +39,7 @@ public class FermataTrenoView extends BindableFrameLayout<FermataTreno> {
         ritardo_arrivo = (TextView) getRootView().findViewById(R.id.txt_fermata_treno_ritardo_arrivo);
         ritardo_partenza = (TextView) getRootView().findViewById(R.id.txt_fermata_treno_ritardo_partenza);
         binario = (TextView) getRootView().findViewById(R.id.txt_fermata_treno_binario);
+        data_stimata = (TextView) getRootView().findViewById(R.id.txt_fermata_treno_previsione);
 
         simbolo_stazione = (ImageView) getRootView().findViewById(R.id.img_fermata_treno_simbolo);
         simbolo_binario = (ImageView) getRootView().findViewById(R.id.img_fermata_treno_binario);
@@ -65,6 +66,8 @@ public class FermataTrenoView extends BindableFrameLayout<FermataTreno> {
         } else {
             ritardo_arrivo.setText("");
         }
+
+        data_stimata.setText(f.data_stimata);
 
         if (f.ritardo_partenza > 0) {
             ritardo_partenza.setText("+ "+f.ritardo_partenza);
@@ -117,6 +120,8 @@ public class FermataTrenoView extends BindableFrameLayout<FermataTreno> {
             binario.setTextColor(Color.rgb(150, 150, 150));
             simbolo_binario.setColorFilter(Color.rgb(150, 150, 150));
         }
+
+
 
         if (f.is_fermata_soppressa) {
             nome_stazione.setTextColor(getResources().getColor(R.color.colorPrimary));

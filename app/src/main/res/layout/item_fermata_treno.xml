@@ -128,4 +128,19 @@
         android:layout_alignLeft="@+id/txt_fermata_treno_orario_partenza"
         android:layout_alignStart="@+id/txt_fermata_treno_orario_partenza" />
 
+    <TextView
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_fermata_treno_previsione"
+        android:textColor="#e29c1a"
+        android:textSize="16sp"
+        android:textAlignment="viewStart"
+        android:gravity="left"
+        android:layout_alignBaseline="@+id/txt_fermata_treno_binario"
+        android:layout_alignBottom="@+id/txt_fermata_treno_binario"
+        android:layout_toRightOf="@+id/txt_fermata_treno_binario"
+        android:layout_toEndOf="@+id/txt_fermata_treno_binario"
+        android:layout_marginLeft="10dp" />
+
 </RelativeLayout>

@@ -99,7 +99,7 @@ public class FragmentTratta extends Fragment {
                     aq.id(R.id.txt_tratta_destinazione_orario).text(tratta.destinazione_orario);
 
                     aq.id(R.id.txt_tratta_ultimorilevamento).text(tratta.ultimo_rilevamento_orario+" a "+tratta.ultimo_rilevamento_stazione);
-                    if (tratta.ultimo_rilevamento_orario.equals("--")) {
+                    if (tratta.ultimo_rilevamento_orario.equals("--") || tratta.ultimo_rilevamento_stazione.equals("--")) {
                         aq.id(R.id.card_tratta_ultimorilevamento).gone();
                     } else {
                         aq.id(R.id.card_tratta_ultimorilevamento).visible();
