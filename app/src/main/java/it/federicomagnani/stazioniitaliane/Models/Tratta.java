@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 
+import it.federicomagnani.stazioniitaliane.Utility;
+
 import static it.federicomagnani.stazioniitaliane.Utility.ucWords;
 
 public class Tratta {
@@ -31,8 +33,8 @@ public class Tratta {
         this();
         try {
             ritardo = o.getInt("ritardo");
-            origine = new Stazione(o.getString("idOrigine"), ucWords(o.getString("origineZero")));
-            destinazione = new Stazione(o.getString("idDestinazione"), ucWords(o.getString("destinazioneZero")));
+            origine = new Stazione(o.getString("idOrigine"), Utility.ucWords(o.getString("origineZero")));
+            destinazione = new Stazione(o.getString("idDestinazione"), Utility.ucWords(o.getString("destinazioneZero")));
             origine_orario = o.getString("compOrarioPartenza");
             destinazione_orario = o.getString("compOrarioArrivo");
             ultimo_rilevamento_stazione = ucWords(o.getString("stazioneUltimoRilevamento"));
@@ -42,7 +44,6 @@ public class Tratta {
             for (int i=0; i<json_fermate.length(); i++) {
                 fermate.add(new FermataTreno(json_fermate.getJSONObject(i)));
             }
-            Log.d("tratta class", "has fermate num "+fermate.size());
         } catch (JSONException e) {
             e.printStackTrace();
         }

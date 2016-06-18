@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp">
 
     <TextView
         android:text="+ 00"
@@ -52,7 +56,7 @@
         android:layout_height="30dp"
         android:id="@+id/imageView"
         android:src="@mipmap/point"
-        android:tint="#AAA"
+        android:tint="#888"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView"
@@ -64,8 +68,8 @@
         android:text="Nome Stazione"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8"
-        android:textColor="#222"
+        android:id="@+id/txt_fermata_treno_stazione"
+        android:textColor="#888"
         android:textSize="16sp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageView"

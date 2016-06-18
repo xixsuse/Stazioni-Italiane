@@ -5,6 +5,8 @@ import com.orm.SugarRecord;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import it.federicomagnani.stazioniitaliane.Utility;
+
 public class Stazione extends SugarRecord {
 
     public String id_stazione;
@@ -30,7 +32,7 @@ public class Stazione extends SugarRecord {
 
     public Stazione(String id_stazione, String nome) {
         this.id_stazione = id_stazione;
-        this.nome = nome;
+        this.nome = Utility.ucWords(nome);
     }
 
     @Override

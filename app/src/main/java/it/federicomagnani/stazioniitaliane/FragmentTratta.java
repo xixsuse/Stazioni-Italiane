@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -16,6 +17,9 @@ import com.androidquery.callback.AjaxStatus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.nlopez.smartadapters.SmartAdapter;
+import it.federicomagnani.stazioniitaliane.Adapters.FermataTrenoView;
+import it.federicomagnani.stazioniitaliane.Models.FermataTreno;
 import it.federicomagnani.stazioniitaliane.Models.Stazione;
 import it.federicomagnani.stazioniitaliane.Models.Tratta;
 import it.federicomagnani.stazioniitaliane.Models.Treno;
@@ -64,6 +68,9 @@ public class FragmentTratta extends Fragment {
                     aq.id(R.id.txt_tratta_destinazione_orario).text(tratta.destinazione_orario);
                     aq.id(R.id.txt_tratta_ultimorilevamento_orario).text(tratta.ultimo_rilevamento_orario);
                     aq.id(R.id.txt_tratta_ultimorilevamento_stazione).text(tratta.ultimo_rilevamento_stazione);
+
+                    ListView stazioni_listview = (ListView) getActivity().findViewById(R.id.list_tratta);
+                    SmartAdapter.items(tratta.fermate).map(FermataTreno.class, FermataTrenoView.class).into(stazioni_listview);
                 } else {
                     Toast.makeText(getContext(), "Errore server #2 "+status.getMessage()+" "+status.getError(), Toast.LENGTH_SHORT).show();
                 }
