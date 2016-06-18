@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <ImageView
         android:layout_alignParentTop="true"
@@ -21,7 +23,7 @@
         android:id="@+id/txt_item_treno_stazione_destinazione"
         android:textColor="#222"
         android:textSize="18sp"
-        android:layout_toLeftOf="@+id/txt_item_treno_stazione_ritardo"
+        android:layout_toLeftOf="@+id/cardView2"
         android:layout_toRightOf="@+id/img_item_treno_stazione"
         android:layout_toEndOf="@+id/img_item_treno_stazione" />
 
@@ -41,20 +43,33 @@
         android:textStyle="normal|bold"
         android:background="#eee" />
 
-    <TextView
-        android:text="+0 min"
+    <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txt_item_treno_stazione_ritardo"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
         android:layout_toLeftOf="@+id/txt_item_treno_stazione_orario"
         android:layout_toStartOf="@+id/txt_item_treno_stazione_orario"
         android:layout_marginRight="5dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="3dp"
         android:layout_alignTop="@+id/txt_item_treno_stazione_orario"
         android:layout_alignBottom="@+id/txt_item_treno_stazione_orario"
-        android:gravity="center_vertical"
-        android:background="#eee" />
+        android:id="@+id/cardView2">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="+0 min"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/txt_item_treno_stazione_ritardo"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 
     <TextView
         android:text="REG 0000"
@@ -91,5 +106,19 @@
         android:layout_toRightOf="@+id/img_treno_stazione_binario"
         android:layout_toEndOf="@+id/img_treno_stazione_binario"
         android:layout_marginLeft="3dp" />
+
+    <TextView
+        android:text="MSG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_item_treno_stazione_messaggio"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:background="#eee"
+        android:layout_alignTop="@+id/txt_item_treno_stazione_identificativo"
+        android:layout_toLeftOf="@+id/txt_item_treno_stazione_identificativo"
+        android:layout_toStartOf="@+id/txt_item_treno_stazione_identificativo"
+        android:layout_marginRight="5dp" />
 
 </RelativeLayout>

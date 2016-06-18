@@ -10,6 +10,8 @@ public class TrenoInStazione {
     public String destinazione, origine, orario_partenza, orario_arrivo, binario_arrivo, binario_partenza, identificativo, tipo_treno, cod_stazione_origine;
     public int ritardo, numero_treno;
     public boolean binario_confermato;
+    public boolean riprogrammazione = false;
+    public boolean soppresso = false;
 
     public TrenoInStazione(JSONObject o) {
         try {
@@ -25,6 +27,10 @@ public class TrenoInStazione {
             binario_partenza = o.getString("binarioEffettivoPartenzaDescrizione").equals("null") ? o.getString("binarioProgrammatoPartenzaDescrizione") : o.getString("binarioEffettivoPartenzaDescrizione");
             binario_arrivo = o.getString("binarioEffettivoArrivoDescrizione").equals("null") ? o.getString("binarioProgrammatoArrivoDescrizione") : o.getString("binarioEffettivoArrivoDescrizione");
             tipo_treno = o.getString("categoria");
+
+            //DA AGGIUSTARE
+            //riprogrammazione = o.getString("riprogrammazione").equals("Y");
+            //soppresso = o.getBoolean("nonPartito");
 
             binario_confermato = !o.getString("binarioEffettivoArrivoDescrizione").equals("null") || !o.getString("binarioEffettivoPartenzaDescrizione").equals("null");
         } catch (JSONException e) {

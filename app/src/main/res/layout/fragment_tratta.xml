@@ -23,7 +23,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:textSize="17sp"
                 android:textColor="#555"
@@ -40,7 +40,8 @@
                 android:layout_marginTop="5dp"
                 android:textSize="17sp"
                 android:textColor="#555"
-                android:textStyle="normal|bold" />
+                android:textStyle="normal|bold"
+                android:layout_marginBottom="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,57 +68,106 @@
                 android:layout_alignStart="@+id/txt_tratta_origine"
                 android:textSize="17sp" />
 
-            <TextView
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ultimo rilevamento"
-                android:id="@+id/txt_tratta_rilevamento"
-                android:textSize="17sp"
-                android:layout_below="@+id/txt_tratta_destinazione_orario"
-                android:layout_alignLeft="@+id/txt_tratta_destinazione_orario"
-                android:layout_alignStart="@+id/txt_tratta_destinazione_orario"
-                android:layout_marginTop="5dp"
+                app:cardCornerRadius="3dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="15dp"
-                android:singleLine="false"
-                android:ellipsize="end"
-                android:textColor="#4f9008" />
+                android:layout_marginTop="15dp"
+                android:id="@+id/card_tratta_ritardo"
+                android:visibility="gone">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+ 0 minuti"
+                        android:id="@+id/txt_tratta_ritardo"
+                        android:textColor="#fff"
+                        android:textSize="15sp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+ 0 minuti"
-                android:id="@+id/txt_tratta_ritardo"
-                android:textColor="@color/colorPrimary"
-                android:textSize="17sp"
-                android:layout_alignBaseline="@+id/txt_tratta_origine"
-                android:layout_alignBottom="@+id/txt_tratta_origine"
-                android:layout_alignRight="@+id/txt_tratta_rilevamento"
-                android:layout_alignEnd="@+id/txt_tratta_rilevamento" />
+                android:layout_below="@id/txt_tratta_destinazione_orario"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#769cfd"
+                app:contentPaddingTop="10dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/card_tratta_ultimorilevamento"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00:00"
-                android:id="@+id/txt_tratta_ultimorilevamento_orario"
-                android:textSize="17sp"
-                android:layout_below="@+id/txt_tratta_rilevamento"
-                android:layout_alignLeft="@+id/txt_tratta_rilevamento"
-                android:layout_alignStart="@+id/txt_tratta_rilevamento"
-                android:textColor="#4f9008"
-                android:layout_marginBottom="15dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ultimo rilevamento"
+                        android:id="@+id/txt_tratta_placeholder_ultimorilevamento"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_tratta_placeholder_ultimorilevamento"
+                        android:textColor="#fff"
+                        android:text="Testo ultimo rilevamento"
+                        android:id="@+id/txt_tratta_ultimorilevamento" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nome stazione"
-                android:id="@+id/txt_tratta_ultimorilevamento_stazione"
-                android:textSize="17sp"
-                android:layout_below="@+id/txt_tratta_rilevamento"
-                android:layout_alignLeft="@+id/txt_tratta_destinazione"
-                android:layout_alignStart="@+id/txt_tratta_destinazione"
-                android:textColor="#4f9008" />
+                android:layout_below="@id/card_tratta_ultimorilevamento"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#ffa743"
+                app:contentPaddingTop="10dp"
+                app:contentPaddingBottom="10dp"
+                app:contentPaddingLeft="15dp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/card_tratta_messaggio"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Corpo del messaggio, corpo di mille balene"
+                        android:id="@+id/txt_tratta_messaggio"
+                        android:textColor="#fff"
+                        android:textSize="15sp"
+                        android:layout_marginRight="15dp" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
 
         </RelativeLayout>
 

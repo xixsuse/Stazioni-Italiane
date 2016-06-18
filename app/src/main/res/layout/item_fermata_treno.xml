@@ -2,87 +2,130 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp">
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/txt_fermata_treno_segmento_successivo"
+        android:background="#bbb"
+        android:layout_below="@+id/txt_fermata_treno_segmento_precedente"
+        android:layout_alignLeft="@+id/txt_fermata_treno_segmento_precedente"
+        android:layout_alignStart="@+id/txt_fermata_treno_segmento_precedente"
+        android:layout_height="35dp"
+        android:layout_width="9dp" />
+
+    <TextView
+        android:id="@+id/txt_fermata_treno_segmento_precedente"
+        android:background="#bbb"
+        android:layout_height="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/img_fermata_treno_simbolo"
+        android:layout_alignStart="@+id/img_fermata_treno_simbolo"
+        android:layout_marginLeft="10dp"
+        android:layout_width="9dp" />
 
     <TextView
         android:text="+ 00"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView5"
+        android:id="@+id/txt_fermata_treno_ritardo_arrivo"
         android:textColor="@color/colorPrimary"
-        android:textSize="16sp" />
-
-    <TextView
-        android:text="+ 00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView3"
-        android:textColor="@color/colorPrimary"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_width="40dp"
+        android:textAlignment="textEnd"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:text="00:00"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView5"
+        android:id="@+id/txt_fermata_treno_orario_partenza"
+        android:layout_below="@+id/txt_fermata_treno_orario_arrivo"
+        android:layout_toEndOf="@+id/txt_fermata_treno_ritardo_partenza"
         android:layout_marginLeft="4dp"
         android:textColor="#444"
-        android:textSize="16sp" />
-
-    <TextView
-        android:text="00:00"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/textView"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginLeft="4dp"
-        android:textColor="#444"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textAlignment="textEnd" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/imageView"
+        android:id="@+id/img_fermata_treno_simbolo"
         android:src="@mipmap/point"
         android:tint="#888"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_alignBottom="@+id/textView6"
+        android:layout_toRightOf="@+id/txt_fermata_treno_orario_arrivo"
+        android:layout_toEndOf="@+id/txt_fermata_treno_orario_arrivo"
+        android:layout_alignBottom="@+id/txt_fermata_treno_orario_partenza"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:layout_alignTop="@+id/txt_fermata_treno_orario_arrivo" />
+
+    <ImageView
+        android:id="@+id/img_fermata_treno_binario"
+        app:srcCompat="@mipmap/binario"
+        android:tint="#888"
+        android:layout_height="13dp"
+        android:layout_below="@+id/txt_fermata_treno_stazione"
+        android:layout_toRightOf="@+id/img_fermata_treno_simbolo"
+        android:layout_toEndOf="@+id/img_fermata_treno_simbolo"
+        android:layout_alignBottom="@+id/txt_fermata_treno_binario"
+        android:layout_width="10dp"
+        android:layout_marginRight="3dp" />
+
+    <TextView
+        android:text="Binario 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_fermata_treno_binario"
+        android:textColor="#888"
+        android:textSize="16sp"
+        android:layout_below="@+id/txt_fermata_treno_stazione"
+        android:layout_toRightOf="@+id/img_fermata_treno_binario"
+        android:layout_toEndOf="@+id/img_fermata_treno_binario"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="+ 00"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_fermata_treno_ritardo_partenza"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textAlignment="textEnd"
+        android:layout_below="@+id/txt_fermata_treno_ritardo_arrivo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp" />
 
     <TextView
         android:text="Nome Stazione"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txt_fermata_treno_stazione"
         android:textColor="#888"
-        android:textSize="16sp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_alignTop="@+id/img_fermata_treno_simbolo"
+        android:layout_toRightOf="@+id/img_fermata_treno_simbolo"
+        android:layout_toEndOf="@+id/img_fermata_treno_simbolo"
+        android:layout_marginRight="15dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        app:srcCompat="@mipmap/binario"
-        android:tint="#888"
-        android:layout_width="15dp"
-        android:layout_height="13dp"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+    <TextView
+        android:text="00:00"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_fermata_treno_orario_arrivo"
+        android:textColor="#444"
+        android:textSize="16sp"
+        android:textAlignment="textEnd"
+        android:layout_alignBaseline="@+id/txt_fermata_treno_ritardo_arrivo"
+        android:layout_alignBottom="@+id/txt_fermata_treno_ritardo_arrivo"
+        android:layout_alignLeft="@+id/txt_fermata_treno_orario_partenza"
+        android:layout_alignStart="@+id/txt_fermata_treno_orario_partenza" />
 
 </RelativeLayout>

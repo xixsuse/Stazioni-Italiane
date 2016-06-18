@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import io.nlopez.smartadapters.views.BindableFrameLayout;
 import it.federicomagnani.stazioniitaliane.Models.TrenoInStazione;
 import it.federicomagnani.stazioniitaliane.R;
@@ -14,7 +16,7 @@ import it.federicomagnani.stazioniitaliane.R;
 
 public class TrenoStazioneView  extends BindableFrameLayout<TrenoInStazione> {
 
-    TextView destinazione, orario, binario, ritardo, identificativo;
+    TextView destinazione, orario, binario, ritardo, identificativo, messaggio;
     ImageView img_tipo, img_binario;
 
     public TrenoStazioneView(Context context) {
@@ -34,6 +36,7 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoInStazione> {
         binario = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_binario);
         ritardo = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_ritardo);
         identificativo = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_identificativo);
+        messaggio = (TextView) getRootView().findViewById(R.id.txt_item_treno_stazione_messaggio);
 
         img_binario = (ImageView) getRootView().findViewById(R.id.img_treno_stazione_binario);
         img_tipo = (ImageView) getRootView().findViewById(R.id.img_item_treno_stazione);
@@ -83,6 +86,15 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoInStazione> {
             img_tipo.setImageResource(R.mipmap.logo_treno_euronight);
         } else { //Fallback su default
             img_tipo.setImageResource(R.mipmap.logo_treno_standard);
+        }
+
+        if (trenoInStazione.riprogrammazione || trenoInStazione.soppresso) {
+            destinazione.setTextColor(getResources().getColor(R.color.colorPrimary));
+            messaggio.setText(trenoInStazione.riprogrammazione ? "Parz. canc." : "SOPPRESSO");
+            messaggio.setVisibility(VISIBLE);
+        } else {
+            destinazione.setTextColor(Color.rgb(80, 80, 80));
+            messaggio.setVisibility(INVISIBLE);
         }
 
         setOnClickListener(new OnClickListener() {

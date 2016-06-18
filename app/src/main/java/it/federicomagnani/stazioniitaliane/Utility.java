@@ -11,4 +11,17 @@ public class Utility {
         return sb.toString().trim();
     }
 
+    public static String formaData(int ore, int minuti) {
+        String data = "";
+        if (ore < 10) {
+            data += "0";
+        }
+        data += ore+":";
+        if (minuti < 10) {
+            data += "0";
+        }
+        data += minuti+"";
+        return data;
+    }
+
 }

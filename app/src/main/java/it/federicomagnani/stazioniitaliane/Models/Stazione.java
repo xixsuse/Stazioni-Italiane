@@ -32,7 +32,7 @@ public class Stazione extends SugarRecord {
 
     public Stazione(String id_stazione, String nome) {
         this.id_stazione = id_stazione;
-        this.nome = Utility.ucWords(nome);
+        this.nome = Utility.ucWords(nome.replace(".",". "));
     }
 
     @Override

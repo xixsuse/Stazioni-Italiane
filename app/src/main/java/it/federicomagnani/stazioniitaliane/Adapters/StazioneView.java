@@ -45,6 +45,8 @@ public class StazioneView extends BindableFrameLayout<Stazione> {
             fav.setImageResource(R.mipmap.staroutline);
         }
 
+
+
         fav.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

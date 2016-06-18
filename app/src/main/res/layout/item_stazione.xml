@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/imageView"
+        android:id="@+id/img_fermata_treno_simbolo"
         android:layout_margin="10dp"
         android:src="@mipmap/train"
         android:tint="#555" />
@@ -25,11 +25,11 @@
         android:textSize="16sp"
         android:textColor="#444"
         android:gravity="center_vertical"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignTop="@+id/img_fermata_treno_simbolo"
+        android:layout_alignBottom="@+id/img_fermata_treno_simbolo"
         android:layout_toLeftOf="@+id/img_item_stazione_fav"
-        android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toRightOf="@+id/img_fermata_treno_simbolo"
+        android:layout_toEndOf="@+id/img_fermata_treno_simbolo" />
 
     <ImageView
         android:layout_width="30dp"
