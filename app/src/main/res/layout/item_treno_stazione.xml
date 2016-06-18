@@ -19,9 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/img_item_treno_stazione"
         android:id="@+id/txt_item_treno_stazione_destinazione"
-        android:textColor="#444"
+        android:textColor="#222"
         android:textSize="18sp"
-        android:textStyle="normal|bold"
         android:layout_toLeftOf="@+id/txt_item_treno_stazione_ritardo"
         android:layout_toRightOf="@+id/img_item_treno_stazione"
         android:layout_toEndOf="@+id/img_item_treno_stazione" />
@@ -38,7 +37,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/txt_item_treno_stazione_destinazione"
         android:layout_marginRight="15dp"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:textStyle="normal|bold"
+        android:background="#eee" />
 
     <TextView
         android:text="+0 min"
@@ -49,10 +50,11 @@
         android:textSize="16sp"
         android:layout_toLeftOf="@+id/txt_item_treno_stazione_orario"
         android:layout_toStartOf="@+id/txt_item_treno_stazione_orario"
-        android:layout_marginRight="3dp"
+        android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_item_treno_stazione_orario"
         android:layout_alignBottom="@+id/txt_item_treno_stazione_orario"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:background="#eee" />
 
     <TextView
         android:text="REG 0000"

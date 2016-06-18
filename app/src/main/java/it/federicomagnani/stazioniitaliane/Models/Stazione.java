@@ -28,6 +28,11 @@ public class Stazione extends SugarRecord {
         }
     }
 
+    public Stazione(String id_stazione, String nome) {
+        this.id_stazione = id_stazione;
+        this.nome = nome;
+    }
+
     @Override
     public boolean equals(Object o) {
         return o instanceof Stazione && ((Stazione) o).id_stazione.equals(this.id_stazione) && ((Stazione) o).nome.equals(this.nome);

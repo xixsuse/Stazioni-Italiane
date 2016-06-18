@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.orm.query.Condition;
+import com.orm.query.Select;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.nlopez.smartadapters.SmartAdapter;
+import io.nlopez.smartadapters.adapters.MultiAdapter;
 import io.nlopez.smartadapters.utils.ViewEventListener;
 import it.federicomagnani.stazioniitaliane.Adapters.StazioneView;
 import it.federicomagnani.stazioniitaliane.Models.Stazione;
@@ -41,6 +44,8 @@ import it.federicomagnani.stazioniitaliane.Models.Stazione;
 public class ActivityMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private MaterialSearchView searchView;
+    private MultiAdapter adapter_search;
+    private List<Stazione> stazioni = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +64,22 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         final ViewEventListener<Stazione> listener = new ViewEventListener<Stazione>() {
             @Override
             public void onViewEvent(int i, Stazione s, int i1, View view) {
-                FragmentStazioni.id_stazione = s.id_stazione;
-                FragmentStazioni.nome_stazione = s.nome;
-                searchView.closeSearch();
-                getSupportActionBar().setTitle(s.nome);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container_fragment, FragmentStazioni.newInstance(), "fragment_corrente")
-                        .commit();
+                if (i == 1) {
+                    searchView.closeSearch();
+                    getSupportActionBar().setTitle(s.nome);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container_fragment, FragmentStazioni.newInstance(s), "fragment_corrente")
+                            .addToBackStack("")
+                            .commit();
+                } else if (i == 2) {
+                    //Aggiungo ai preferiti
+                    List<Stazione> staziones = Select.from(Stazione.class).where(Condition.prop("idStazione").eq(s.id_stazione)).list();
+                    staziones.get(0).preferita = !staziones.get(0).preferita;
+                    staziones.get(0).save();
+                    stazioni.get(i1).preferita = staziones.get(0).preferita;
+                    adapter_search.notifyDataSetChanged();
+                }
             }
         };
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
@@ -100,9 +113,12 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
               @Override
               public boolean onQueryTextChange(String newText) {
-                  List<Stazione> stazioni = new ArrayList<>();
+                  stazioni.clear();
                   if (newText.length() > 0) {
-                      stazioni = Stazione.find(Stazione.class, "nome LIKE ? ORDER BY popolarita ASC", "%" + newText + "%");
+                      stazioni = Stazione.find(Stazione.class, "nome LIKE ? ORDER BY preferita DESC, popolarita ASC", "%" + newText + "%");
+                      if (stazioni.size() > 20) {
+                          stazioni = stazioni.subList(0, 20);
+                      }
                   }
                   if (stazioni.size() > 0) {
                       findViewById(R.id.txt_search_placeholder).setVisibility(View.GONE);
@@ -110,7 +126,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
                       findViewById(R.id.txt_search_placeholder).setVisibility(View.VISIBLE);
                   }
                   ListView stazioni_listview = (ListView) findViewById(R.id.list_search_stazione);
-                  SmartAdapter.items(stazioni).map(Stazione.class, StazioneView.class).listener(listener).into(stazioni_listview);
+                  adapter_search = SmartAdapter.items(stazioni).map(Stazione.class, StazioneView.class).listener(listener).into(stazioni_listview);
                   return false;
               }
         });
@@ -179,6 +195,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_stazione) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
+                    .addToBackStack("")
                     .replace(R.id.container_fragment, FragmentStazioni.newInstance(), "fragment_corrente")
                     .commit();
         }
@@ -186,6 +203,6 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
         //Chiudo il drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return false;
     }
 }

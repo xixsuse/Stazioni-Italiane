@@ -1,9 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="it.federicomagnani.stazioniitaliane.FragmentStazioni">
+    tools:context="it.federicomagnani.stazioniitaliane.FragmentStazioni"
+    android:background="#eee">
 
     <com.ogaclejapan.smarttablayout.SmartTabLayout
         android:id="@+id/viewpagertab"
@@ -34,12 +35,60 @@
         app:stl_clickable="true"
         app:stl_titleOffset="24dp"
         app:stl_drawDecorationAfterTab="false"
-        />
+        android:visibility="gone" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/viewpagertab" />
+        android:layout_below="@id/viewpagertab"
+        android:visibility="gone" />
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_stazioni_preferite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        android:layout_margin="20dp">
+
+        <RelativeLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="STAZIONI PREFERITE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:letterSpacing="0.2"
+                android:gravity="center_horizontal"
+                android:id="@+id/txt_stazioni_titolo"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"/>
+
+
+            <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                android:id="@+id/list_stazioni_preferite"
+                android:background="#fff"
+                android:layout_below="@id/txt_stazioni_titolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>

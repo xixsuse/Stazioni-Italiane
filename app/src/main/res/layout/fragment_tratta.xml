@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#eee">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        android:id="@+id/cardView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:id="@+id/txt_tratta_origine_orario"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="17sp"
+                android:textColor="#555"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:id="@+id/txt_tratta_destinazione_orario"
+                android:layout_below="@+id/txt_tratta_origine_orario"
+                android:layout_alignLeft="@+id/txt_tratta_origine_orario"
+                android:layout_alignStart="@+id/txt_tratta_origine_orario"
+                android:layout_marginTop="5dp"
+                android:textSize="17sp"
+                android:textColor="#555"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome Stazione"
+                android:id="@+id/txt_tratta_origine"
+                android:textColor="#222"
+                android:layout_alignBaseline="@+id/txt_tratta_origine_orario"
+                android:layout_alignBottom="@+id/txt_tratta_origine_orario"
+                android:layout_toRightOf="@+id/txt_tratta_origine_orario"
+                android:layout_toEndOf="@+id/txt_tratta_origine_orario"
+                android:layout_marginLeft="15dp"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome Stazione"
+                android:id="@+id/txt_tratta_destinazione"
+                android:textColor="#222"
+                android:layout_alignBaseline="@+id/txt_tratta_destinazione_orario"
+                android:layout_alignBottom="@+id/txt_tratta_destinazione_orario"
+                android:layout_alignLeft="@+id/txt_tratta_origine"
+                android:layout_alignStart="@+id/txt_tratta_origine"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ultimo rilevamento"
+                android:id="@+id/txt_tratta_rilevamento"
+                android:textSize="17sp"
+                android:layout_below="@+id/txt_tratta_destinazione_orario"
+                android:layout_alignLeft="@+id/txt_tratta_destinazione_orario"
+                android:layout_alignStart="@+id/txt_tratta_destinazione_orario"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="15dp"
+                android:singleLine="false"
+                android:ellipsize="end"
+                android:textColor="#4f9008" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ 0 minuti"
+                android:id="@+id/txt_tratta_ritardo"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:layout_alignBaseline="@+id/txt_tratta_origine"
+                android:layout_alignBottom="@+id/txt_tratta_origine"
+                android:layout_alignRight="@+id/txt_tratta_rilevamento"
+                android:layout_alignEnd="@+id/txt_tratta_rilevamento" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:id="@+id/txt_tratta_ultimorilevamento_orario"
+                android:textSize="17sp"
+                android:layout_below="@+id/txt_tratta_rilevamento"
+                android:layout_alignLeft="@+id/txt_tratta_rilevamento"
+                android:layout_alignStart="@+id/txt_tratta_rilevamento"
+                android:textColor="#4f9008"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome stazione"
+                android:id="@+id/txt_tratta_ultimorilevamento_stazione"
+                android:textSize="17sp"
+                android:layout_below="@+id/txt_tratta_rilevamento"
+                android:layout_alignLeft="@+id/txt_tratta_destinazione"
+                android:layout_alignStart="@+id/txt_tratta_destinazione"
+                android:textColor="#4f9008" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_tratta"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cardView" />
+
+</RelativeLayout>
