@@ -2,11 +2,7 @@ package it.federicomagnani.stazioniitaliane;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,12 +22,6 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -197,6 +187,12 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
             fragmentManager.beginTransaction()
                     .addToBackStack("")
                     .replace(R.id.container_fragment, FragmentStazioni.newInstance(), "fragment_corrente")
+                    .commit();
+        } else if (id == R.id.nav_viaggio) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .addToBackStack("")
+                    .replace(R.id.container_fragment, FragmentSoluzioni.newInstance(), "fragment_corrente")
                     .commit();
         }
 

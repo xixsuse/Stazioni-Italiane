@@ -29,7 +29,7 @@ public class TrenoInStazione {
             tipo_treno = o.getString("categoria");
 
             //DA AGGIUSTARE
-            //riprogrammazione = o.getString("riprogrammazione").equals("Y");
+            riprogrammazione = o.getString("riprogrammazione").equals("Y");
             //soppresso = o.getBoolean("nonPartito");
 
             binario_confermato = !o.getString("binarioEffettivoArrivoDescrizione").equals("null") || !o.getString("binarioEffettivoPartenzaDescrizione").equals("null");

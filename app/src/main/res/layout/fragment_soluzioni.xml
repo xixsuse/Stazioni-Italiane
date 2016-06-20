@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:id="@+id/cardView3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_soluzioni_partenza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Stazione di partenza"
+                android:layout_marginRight="15dp"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_toEndOf="@+id/imageView"
+                android:layout_marginLeft="10dp"
+                android:textColor="#444"
+                android:layout_alignBottom="@+id/imageView"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_alignTop="@+id/imageView" />
+
+            <ImageView
+                android:src="@mipmap/partenza"
+                android:id="@+id/imageView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:tint="#444"
+                android:layout_marginLeft="15dp"
+                android:layout_width="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="45dp" />
+
+            <ImageView
+                android:src="@mipmap/arrivo"
+                android:id="@+id/imageView3"
+                android:tint="#444"
+                android:layout_width="30dp"
+                android:layout_below="@+id/imageView"
+                android:layout_alignLeft="@+id/imageView"
+                android:layout_alignStart="@+id/imageView"
+                android:layout_height="45dp" />
+
+            <TextView
+                android:id="@+id/txt_soluzioni_arrivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Stazione di arrivo"
+                android:textColor="#444"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_below="@+id/txt_soluzioni_partenza"
+                android:layout_alignLeft="@+id/txt_soluzioni_partenza"
+                android:layout_alignStart="@+id/txt_soluzioni_partenza"
+                android:layout_alignBottom="@+id/imageView3"
+                android:layout_alignRight="@+id/txt_soluzioni_partenza"
+                android:layout_alignEnd="@+id/txt_soluzioni_partenza" />
+
+            <ImageView
+                android:src="@mipmap/calendar"
+                android:id="@+id/imageView4"
+                android:tint="#444"
+                android:layout_width="30dp"
+                android:layout_below="@+id/imageView3"
+                android:layout_alignLeft="@+id/imageView3"
+                android:layout_alignStart="@+id/imageView3"
+                android:layout_height="45dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="20 Giugno"
+                android:textColor="#444"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_below="@+id/txt_soluzioni_arrivo"
+                android:layout_alignLeft="@+id/txt_soluzioni_arrivo"
+                android:layout_alignStart="@+id/txt_soluzioni_arrivo"
+                android:layout_alignBottom="@+id/imageView4" />
+
+            <Button
+                android:text="Cerca soluzioni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView5"
+                android:layout_alignRight="@+id/txt_soluzioni_partenza"
+                android:layout_alignEnd="@+id/txt_soluzioni_partenza"
+                android:id="@+id/button"
+                android:layout_marginBottom="15dp"
+                android:theme="@style/btn_green"
+                android:layout_alignLeft="@+id/imageView4"
+                android:layout_alignStart="@+id/imageView4"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:src="@mipmap/clock"
+                android:id="@+id/imageView5"
+                android:tint="#444"
+                android:layout_width="30dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/txt_soluzioni_arrivo"
+                android:layout_toRightOf="@+id/textView3"
+                android:layout_toEndOf="@+id/textView3"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="00:00"
+                android:textColor="#444"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_below="@+id/txt_soluzioni_arrivo"
+                android:layout_toRightOf="@+id/imageView5"
+                android:layout_toEndOf="@+id/imageView5"
+                android:layout_alignBottom="@+id/imageView5"
+                android:layout_marginLeft="10dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@ package it.federicomagnani.stazioniitaliane;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,14 +17,12 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.nlopez.smartadapters.SmartAdapter;
 import io.nlopez.smartadapters.utils.ViewEventListener;
 import it.federicomagnani.stazioniitaliane.Adapters.FermataTrenoView;
 import it.federicomagnani.stazioniitaliane.Models.FermataTreno;
-import it.federicomagnani.stazioniitaliane.Models.Stazione;
 import it.federicomagnani.stazioniitaliane.Models.Tratta;
 import it.federicomagnani.stazioniitaliane.Models.Treno;
 
@@ -31,6 +30,7 @@ public class FragmentTratta extends Fragment {
 
     private Treno treno;
     private Tratta tratta;
+    private SwipeRefreshLayout swipy;
 
     public FragmentTratta() {
         // Required empty public constructor
@@ -51,24 +51,31 @@ public class FragmentTratta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_tratta, container, false);
 
-        AQuery aq = new AQuery(v);
         if (treno == null) {
             return v;
         }
 
-        final ViewEventListener<FermataTreno> listener = new ViewEventListener<FermataTreno>() {
+        swipy = (SwipeRefreshLayout) v.findViewById(R.id.swipe_tratta);
+        swipy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onViewEvent(int i, FermataTreno f, int i1, View view) {
-                if (i == 1) {
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .addToBackStack("")
-                            .replace(R.id.container_fragment, FragmentStazioni.newInstance(f.stazione), "fragment_corrente")
-                            .commit();
-                }
+            public void onRefresh() {
+                aggiornaTratta();
             }
-        };
+        });
+        swipy.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        swipy.post(new Runnable() {
+            @Override public void run() {
+                swipy.setRefreshing(true);
+            }
+        });
 
+        aggiornaTratta();
+
+        return v;
+    }
+
+    private void aggiornaTratta() {
+        AQuery aq = new AQuery(getActivity());
         String url = "http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/andamentoTreno/"+treno.codice_origine+"/"+treno.numero_treno;
         Log.d("url tratta", url);
         aq.ajax(url, JSONObject.class, new AjaxCallback<JSONObject>() {
@@ -105,6 +112,18 @@ public class FragmentTratta extends Fragment {
                         aq.id(R.id.card_tratta_ultimorilevamento).visible();
                     }
 
+                    final ViewEventListener<FermataTreno> listener = new ViewEventListener<FermataTreno>() {
+                        @Override
+                        public void onViewEvent(int i, FermataTreno f, int i1, View view) {
+                            if (i == 1) {
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                fragmentManager.beginTransaction()
+                                        .addToBackStack("")
+                                        .replace(R.id.container_fragment, FragmentStazioni.newInstance(f.stazione), "fragment_corrente")
+                                        .commit();
+                            }
+                        }
+                    };
                     ListView stazioni_listview = (ListView) getActivity().findViewById(R.id.list_tratta);
                     SmartAdapter.items(tratta.fermate).map(FermataTreno.class, FermataTrenoView.class).listener(listener).into(stazioni_listview);
 
@@ -120,10 +139,9 @@ public class FragmentTratta extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Errore server #2 "+status.getMessage()+" "+status.getError(), Toast.LENGTH_SHORT).show();
                 }
+                swipy.setRefreshing(false);
             }
         });
-
-        return v;
     }
 
     @Override

@@ -4,6 +4,7 @@ package it.federicomagnani.stazioniitaliane;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class FragmentList extends Fragment {
     private MultiAdapter adapter;
     private ListView listView;
     private Stazione stazione;
+    private SwipeRefreshLayout swipy;
 
     public FragmentList() {
         // Required empty public constructor
@@ -77,6 +79,20 @@ public class FragmentList extends Fragment {
         listView = (ListView) v.findViewById(R.id.list_treni);
         adapter = SmartAdapter.items(treni).map(TrenoInStazione.class, TrenoStazioneView.class).listener(listener).into(listView);
 
+        swipy = (SwipeRefreshLayout) v.findViewById(R.id.swipe_list);
+        swipy.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                aggiornaDati();
+            }
+        });
+        swipy.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        swipy.post(new Runnable() {
+            @Override public void run() {
+                swipy.setRefreshing(true);
+            }
+        });
+
         aggiornaDati();
 
         return v;
@@ -112,6 +128,7 @@ public class FragmentList extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Errore server #2 "+status.getMessage()+" "+status.getError(), Toast.LENGTH_SHORT).show();
                 }
+                swipy.setRefreshing(false);
             }
         });
     }

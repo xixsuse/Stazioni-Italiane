@@ -4,14 +4,14 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_viaggio"
+            android:icon="@mipmap/soluzioni"
+            android:title="Cerca viaggio" />
+
+        <item
             android:id="@+id/nav_stazione"
             android:icon="@mipmap/train"
             android:title="Stazione" />
-
-        <item
-            android:id="@+id/nav_mappa"
-            android:icon="@mipmap/map"
-            android:title="Mappa stazioni" />
 
     </group>
 

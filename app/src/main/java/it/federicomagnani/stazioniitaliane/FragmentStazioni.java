@@ -8,9 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView;
@@ -31,6 +28,7 @@ import it.federicomagnani.stazioniitaliane.Adapters.StazioneView;
 import it.federicomagnani.stazioniitaliane.Models.Stazione;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class FragmentStazioni extends Fragment {
 
@@ -72,11 +70,11 @@ public class FragmentStazioni extends Fragment {
 
             ViewPager viewPager = (ViewPager) v.findViewById(R.id.viewpager);
             viewPager.setAdapter(adapter);
-            viewPager.setVisibility(View.VISIBLE);
+            viewPager.setVisibility(VISIBLE);
 
             SmartTabLayout viewPagerTab = (SmartTabLayout) v.findViewById(R.id.viewpagertab);
             viewPagerTab.setViewPager(viewPager);
-            viewPagerTab.setVisibility(View.VISIBLE);
+            viewPagerTab.setVisibility(VISIBLE);
 
             aq.id(R.id.card_stazioni_preferite).gone();
         } else {
@@ -117,7 +115,14 @@ public class FragmentStazioni extends Fragment {
             ((ActivityMain) getActivity()).getSupportActionBar().setTitle(stazione.nome);
             getActivity().findViewById(R.id.card_stazioni_preferite).setVisibility(GONE);
         } else {
+            getActivity().findViewById(R.id.card_stazioni_preferite).setVisibility(VISIBLE);
             ((ActivityMain) getActivity()).getSupportActionBar().setTitle("Stazioni italiane");
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().findViewById(R.id.card_stazioni_preferite).setVisibility(GONE);
     }
 }

@@ -90,7 +90,7 @@ public class TrenoStazioneView  extends BindableFrameLayout<TrenoInStazione> {
 
         if (trenoInStazione.riprogrammazione || trenoInStazione.soppresso) {
             destinazione.setTextColor(getResources().getColor(R.color.colorPrimary));
-            messaggio.setText(trenoInStazione.riprogrammazione ? "Parz. canc." : "SOPPRESSO");
+            messaggio.setText(trenoInStazione.riprogrammazione ? "MODIFICHE" : "SOPPRESSO");
             messaggio.setVisibility(VISIBLE);
         } else {
             destinazione.setTextColor(Color.rgb(80, 80, 80));
