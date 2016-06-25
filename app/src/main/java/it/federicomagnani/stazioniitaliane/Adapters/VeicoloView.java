@@ -79,9 +79,13 @@ public class VeicoloView extends BindableFrameLayout<Veicolo> {
             img_tipo.setImageResource(R.mipmap.logo_treno_frecciabianca);
         }  else if  (v.prefisso_treno.equals("RV")) {
             img_tipo.setImageResource(R.mipmap.logo_treno_regionale);
+        }  else if  (v.num_treno.equals("Urb")) {
+            img_tipo.setImageResource(R.mipmap.logo_treno_suburbano);
         } else { //Fallback su default
             img_tipo.setImageResource(R.mipmap.logo_treno_standard);
         }
+
+        setOnClickListener(null);
 
         if (v.tratta == null) {
             //Trovo il ritardo e altri dettagli
