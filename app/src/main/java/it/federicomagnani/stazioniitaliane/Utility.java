@@ -5,8 +5,15 @@ public class Utility {
     public static String ucWords(String sentence) {
         StringBuffer sb = new StringBuffer();
         sentence = sentence.toLowerCase().replace(".", ". ").replace("  ", " ").trim();
+        if (sentence.length() == 0) {
+            return "";
+        }
         for (CharSequence word: sentence.split(" ")) {
-            sb.append(Character.toUpperCase(word.charAt(0))).append(word.subSequence(1, word.length())).append(" ");
+            if (word.length() > 0) {
+                sb.append(Character.toUpperCase(word.charAt(0))).append(word.subSequence(1, word.length())).append(" ");
+            } else {
+                sb.append(word).append(" ");
+            }
         }
         return sb.toString().trim();
     }

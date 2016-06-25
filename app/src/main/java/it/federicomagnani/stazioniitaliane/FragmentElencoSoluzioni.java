@@ -88,4 +88,9 @@ public class FragmentElencoSoluzioni extends Fragment {
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((ActivityMain) getActivity()).getSupportActionBar().setTitle("Elenco soluzioni");
+    }
 }

@@ -19,7 +19,7 @@ import it.federicomagnani.stazioniitaliane.R;
 
 public class SoluzioneView extends BindableFrameLayout<Soluzione> {
 
-    TextView nome;
+    TextView nome, cambi;
     ExpandableHeightListView list_veicoli;
 
     public SoluzioneView(Context context) {
@@ -35,12 +35,14 @@ public class SoluzioneView extends BindableFrameLayout<Soluzione> {
     public void onViewInflated() {
         //Assegno le views
         nome = (TextView) getRootView().findViewById(R.id.txt_item_soluzione_durata);
+        cambi = (TextView) getRootView().findViewById(R.id.txt_item_soluzione_cambi);
         list_veicoli = (ExpandableHeightListView) getRootView().findViewById(R.id.list_item_soluzione_list);
     }
 
     @Override
     public void bind(Soluzione s) {
         nome.setText("Durata "+s.durata);
+        cambi.setText((s.veicoli.size()-1)+((s.veicoli.size()-1) == 1 ? " cambio" : " cambi"));
         SmartAdapter.items(s.veicoli).map(Veicolo.class, VeicoloView.class).into(list_veicoli);
         list_veicoli.setExpanded(true);
     }

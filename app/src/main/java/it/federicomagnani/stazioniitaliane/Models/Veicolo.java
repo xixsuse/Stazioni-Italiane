@@ -16,6 +16,8 @@ public class Veicolo {
     public String prefisso_treno;
     public String categoria_treno;
     public String num_treno;
+    public Tratta tratta;
+    public String id_origine;
 
     public Veicolo(JSONObject o) {
         try {
@@ -26,6 +28,7 @@ public class Veicolo {
             this.num_treno = o.getString("numeroTreno");
             this.prefisso_treno = o.getString("categoriaDescrizione");
             this.categoria_treno = (o.getString("categoriaDescrizione") + " "+ o.getString("numeroTreno")).trim();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
