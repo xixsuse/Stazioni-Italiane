@@ -54,14 +54,16 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/img_fermata_treno_simbolo"
-        android:src="@mipmap/point"
-        android:tint="#888"
+        android:src="@mipmap/cerchio"
+        android:tint="#999"
         android:layout_toRightOf="@+id/txt_fermata_treno_orario_arrivo"
         android:layout_toEndOf="@+id/txt_fermata_treno_orario_arrivo"
         android:layout_alignBottom="@+id/txt_fermata_treno_orario_partenza"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignTop="@+id/txt_fermata_treno_orario_arrivo" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@+id/txt_fermata_treno_orario_arrivo"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp" />
 
     <ImageView
         android:id="@+id/img_fermata_treno_binario"

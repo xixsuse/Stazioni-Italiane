@@ -4,6 +4,7 @@ package it.federicomagnani.stazioniitaliane;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,17 @@ public class FragmentSoluzioni extends Fragment {
                 fragmentManager.beginTransaction()
                         .addToBackStack("")
                         .replace(R.id.container_fragment, FragmentRicerca.newInstance(2), "fragment_corrente")
+                        .commit();
+            }
+        });
+
+        aq.id(R.id.btn_soluzioni_elabora).clicked(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .addToBackStack("")
+                        .replace(R.id.container_fragment, FragmentElencoSoluzioni.newInstance(soluzione), "fragment_corrente")
                         .commit();
             }
         });

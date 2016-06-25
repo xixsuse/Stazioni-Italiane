@@ -10,7 +10,7 @@
 
         <item
             android:id="@+id/nav_stazione"
-            android:icon="@mipmap/train"
+            android:icon="@mipmap/timetable"
             android:title="Stazione" />
 
     </group>

@@ -57,7 +57,7 @@ public class FragmentRicerca extends Fragment {
             @Override
             public void onViewEvent(int i, Stazione s, int i1, View view) {
                 if (i == 1) {
-                    //MANDO AL FRAGMENT PRECEDENTE NON SO COME
+                    s.id_stazione = Integer.parseInt(s.id_stazione.replace("S0", ""))+"";
                     if (tipo == 1) {
                         FragmentSoluzioni.soluzione.partenza = s;
                     } else if (tipo == 2) {

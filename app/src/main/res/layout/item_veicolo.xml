@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:text="DESTINAZIONEH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="17sp"
+        android:textColor="#444"
+        android:layout_toLeftOf="@+id/card_item_veicolo_ritardo"
+        android:layout_toStartOf="@+id/card_item_veicolo_ritardo"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:src="@mipmap/cerchio"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txt_item_veicolo_ora_partenza"
+        android:layout_toRightOf="@+id/txt_item_veicolo_ora_partenza"
+        android:layout_toEndOf="@+id/txt_item_veicolo_ora_partenza"
+        android:id="@+id/imageView7"
+        android:layout_alignBottom="@+id/txt_item_veicolo_ora_partenza"
+        android:layout_width="30dp"
+        android:layout_marginLeft="2dp"
+        android:tint="#aaa" />
+
+    <ImageView
+        android:src="@mipmap/cerchio"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView8"
+        android:layout_width="30dp"
+        android:layout_alignTop="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_toRightOf="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_toEndOf="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_alignBottom="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_marginLeft="2dp"
+        android:tint="#aaa" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_alignBottom="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_alignLeft="@+id/imageView7"
+        android:layout_alignStart="@+id/imageView7"
+        android:layout_alignRight="@+id/imageView7"
+        android:layout_alignEnd="@+id/imageView7"
+        android:background="#aaa"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:text="Stazione arrivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_item_veicolo_stazione_arrivo"
+        android:textSize="15sp"
+        android:textColor="#333"
+        android:layout_alignTop="@+id/imageView8"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6" />
+
+    <ImageView
+        android:src="@mipmap/logo_treno_standard"
+        android:id="@+id/img_item_veicolo_tipo"
+        android:layout_below="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_alignLeft="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_alignStart="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_width="40dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_item_veicolo_ora_arrivo"
+        android:textSize="15sp"
+        android:textColor="#555"
+        android:textStyle="normal|bold"
+        android:layout_alignBottom="@+id/img_item_veicolo_tipo"
+        android:layout_toRightOf="@+id/img_item_veicolo_tipo"
+        android:layout_toEndOf="@+id/img_item_veicolo_tipo" />
+
+    <TextView
+        android:text="Stazione partenza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_item_veicolo_stazione_partenza"
+        android:textSize="15sp"
+        android:textColor="#333"
+        android:layout_alignTop="@+id/imageView7"
+        android:layout_toRightOf="@+id/imageView7"
+        android:layout_toEndOf="@+id/imageView7" />
+
+    <TextView
+        android:text="00:00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_item_veicolo_ora_partenza"
+        android:textSize="15sp"
+        android:textColor="#555"
+        android:textStyle="normal|bold"
+        android:layout_alignTop="@+id/img_item_veicolo_tipo"
+        android:layout_alignLeft="@+id/txt_item_veicolo_ora_arrivo"
+        android:layout_alignStart="@+id/txt_item_veicolo_ora_arrivo" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_alignTop="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/txt_item_veicolo_destinazione_finale"
+        android:layout_marginRight="10dp"
+        android:id="@+id/card_item_veicolo_ritardo"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ 0 minuti"
+                android:textColor="#fff"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center_vertical"
+                android:textSize="13sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/txt_item_veicolo_ritardo" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -30,7 +30,7 @@
 
     <style name="btn_green" parent="Widget.AppCompat.Button">
         <item name="android:textColor">#fff</item>
-        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
     </style>
 
 </resources>

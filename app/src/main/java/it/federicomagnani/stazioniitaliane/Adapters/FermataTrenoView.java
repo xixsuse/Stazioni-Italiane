@@ -87,7 +87,7 @@ public class FermataTrenoView extends BindableFrameLayout<FermataTreno> {
             simbolo_stazione.setColorFilter(getResources().getColor(R.color.colorAccent));
         } else {
             nome_stazione.setTextColor(Color.rgb(120, 120, 120));
-            simbolo_stazione.setColorFilter(Color.rgb(150, 150, 150));
+            simbolo_stazione.setColorFilter(Color.rgb(180, 180, 180));
         }
 
         if (f.is_origine) {
